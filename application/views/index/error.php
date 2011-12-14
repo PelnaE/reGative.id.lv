@@ -1,0 +1,1 @@
+<div class="warning"><b>Kļūda!</b> <?php echo $message; ?></div>
