@@ -5,12 +5,12 @@ Class Controller_Query Extends Controller_Template{
         {
             if(!empty($_GET['search'])){
                 $pagjinaacija= Pagination::factory(array(
-                    'total_items' => Model::factory('index')->get_count_where($_GET['search']),
+                    'total_items' => Model::factory('article')->get_count_where($_GET['search']),
                     'items_per_page' => 2,
                     'auto_hide' => TRUE,
                 ));
                 $this->template->content = View::factory('index/query')
-                        ->set('query', Model::factory('index')->get_articles_from_query($_GET['search'], $pagjinaacija->offset, $pagjinaacija->items_per_page))
+                        ->set('query', Model::factory('article')->get_articles_from_query($_GET['search'], $pagjinaacija->offset, $pagjinaacija->items_per_page))
                         ->set('pagjinaacija', $pagjinaacija->render());
             }
             else{
